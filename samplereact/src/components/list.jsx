@@ -1,26 +1,26 @@
- import Car from "./car.jsx";
- 
- function list(){
+ import { useState } from "react";
 
-   const namelist = [
-        {name1:"Ashok",age:20},
-        {name1:"Grumsshh",age:19},
-        {name1:"Abi",age:18}
-    ]
+ function List(){
 
-const collage = "nit" ;
-    const typechek= namelist.length>0 &&  Object.keys(collage).length>0;
- 
+    [list,setList]=useState([])
+    [count,setCount] = useState(1);
+
+     function onepiece(){
+        const increse = "Item"+count;
+        setCount((previouState)=> { return previouState+1});
+        setList((previouState)=>{return [...previouState,increse]})
+     }
+    
+
     return(
         <>
-        <ul>
-    { typechek && namelist.map((item,index)=>
-        <li key={index}><Car name1 ={item.name1} age = {item.age}></Car></li>
-     )}
-     </ul>
-
-    </>
-    )   
-}
-
-export default list;
+            <h1>List</h1>
+            <button onClick={onepiece}> ADD LIST</button>
+            <ul>{
+                
+                list.map((el,index)=><li key={index}>{el}</li>)
+                }</ul>
+        
+        </>
+    )
+ }
