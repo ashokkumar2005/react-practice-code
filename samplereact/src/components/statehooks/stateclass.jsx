@@ -1,24 +1,30 @@
- import React from "react";
+import React from "react";
 
- class Showroom extends React.Component{
+class Showroom extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { Model: "RX100", color: "black" };
+  }
 
-    constructor(){
-        super();
-        this.state ={Model:"RX100", color:"black"}
+  render() {
+    return (
+      <>
+        <h2>
+          Bike model is {this.state.Model} and color is {this.state.color}
+        </h2>
+        <button
+          onClick={() => {
+            this.setState((previousState) => ({
+              ...previousState,
+              Model: "R15",
+            }));
+          }}
+        >
+          Update Model
+        </button>
+      </>
+    );
+  }
+}
 
-        return(
-            <>
-                <h2>Bike model is {this.state.Model} and color is {this.state.color}</h2>
-                <button onClick={()=>{this.setState((priviousState)=>  
-                    {return{...priviousState,Model:"R15"}
-                })
-                    }
-                    }>
-                Update Model</button>
-            </>
-        )
-    }
-
- }
-
- export default Showroom;
+export default Showroom;

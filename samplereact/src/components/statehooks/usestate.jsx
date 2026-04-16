@@ -1,29 +1,35 @@
- import { use, useState } from "react";
+import { useState } from "react";
 
- function Use(){
+function Use() {
+  const [color, setColor] = useState("Red");
+  const [car, setCar] = useState({
+    Model: "BMW M5",
+    Year: 2025,
+    Color: "black",
+    Owner: "Ashok",
+    Booking: true,
+  });
 
-    [collor,setCollor] = useState("Red")
-    [car,setCar]=useState(
-      { Model : "BMW M5",
-        Year : 2025,
-        Color:"black",
-        Owner : "Ashok",
-        Booking : true
-      }
-    )
-const updatecar = ()=>{
-     setCar(previousStae=>{
-      return{...priviousState,color:"white"}
-     })
+  const updateCar = () => {
+    setCar((previousState) => ({
+      ...previousState,
+      Color: "white", 
+    }));
+  };
+
+  return (
+    <>
+      <h2>Car Model</h2>
+      <button onClick={updateCar}>Update Car</button>
+      <h2>Color is {color}</h2>
+      <button onClick={() => setColor("blue")}>Change Color</button>
+      
+      {/* Display car details */}
+      <h3>{car.Model}</h3>
+      <p>Color: {car.Color}</p>
+      <p>Owner: {car.Owner}</p>
+    </>
+  );
 }
-    return(
-        <>
-          <h2> Car Model</h2>
-          <button onClick={(updatecar)}> Update Car </button>
-          <h2>collor is {collor}</h2>
-          <button type="submit" onClick={setCollor("bule")}>change</button>
-        </>
-    )
- }
 
- export default Use;
+export default Use;
